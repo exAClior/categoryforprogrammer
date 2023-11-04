@@ -1,0 +1,99 @@
+#+TITLE: Category: The Essence of Composition
+#+AUTHOR: Yusheng Zhao
+
+* Category: The Essence of Composition
+** Arrows as Functions
+Categories are made up of objects and arrows. Arrows are *morphism*. In Haskell, you denote the type of input object and output object like below.
+#+begin_src haskell
+f :: A -> B
+g :: B -> C
+g . f
+#+end_src
+
+#+RESULTS:
+
+** Properties of Composition
+- Associativity
+  #+begin_src haskell
+  f :: A -> B
+  g :: B -> C
+  h :: C -> D
+  -- (h . g) . f == h . (g . f) == h . (g . f)
+  #+end_src
+- There needs to be an identity morphism for every object that does not change
+  arbitrary morphism when composed
+- Identity is important because you need it for *higher-order* function. Higher
+  order function make it possible to do algebra and symbolic manipulation with
+  functions.
+- In haskell, you get identity in standard library
+  #+begin_src haskell
+  id :: a -> a -- here a is parameterized type
+  id x = x
+  #+end_src
+
+** Composition is the Essence of Problem Solving
+- We solve large, un-managable, hard problems by breaking them down into smaller
+  and more managable ones.
+- Human brains can keep \(7 \pm 2\) things at ones.
+- Beautiful and elegant code is code that does this sort of splitting well!
+- Rule of thumb for determining what's elegant: "Area of solution grows slower
+  than the volume."
+  1) Area: information we need to compose two functions
+  2) Volume: information we need to implement two functions
+
+** Challenges
+*** Identity function implementation
+#+begin_src julia-vterm :session challenge :results output
+println(@doc identity)
+#+end_src
+
+#+RESULTS:
+#+begin_example
+```
+identity(x)
+```
+
+The identity function. Returns its argument.
+
+See also: [`one`](@ref), [`oneunit`](@ref), and [`LinearAlgebra`](@ref man-linalg)'s `I`.
+
+# Examples
+
+```jldoctest
+julia> identity("Well, what did you expect?")
+"Well, what did you expect?"
+```
+
+
+#+end_example
+
+*** Composition function implementation
+#+begin_src julia-vterm :session challenge :results both
+function composition(A,B)
+    return A ∘ B
+end
+#+end_src
+
+#+RESULTS:
+: composition (generic function with 1 method)
+
+*** Test
+#+begin_src julia-vterm :session challenge :results both
+function square(A)
+    return A^2
+end
+resAB = composition(square, identity)(3.0)
+resBA = composition(identity, square)(3.0)
+
+@assert resAB == resBA
+#+end_src
+
+#+RESULTS:
+: nothing
+
+*** Examples of category
+World-wide web is not categories. They might violate the requirement that when
+there's a morphism from A to B and B to C, there must be a morphism between A
+to C.
+
+Facebook is not a category. Friendship are not composable.
