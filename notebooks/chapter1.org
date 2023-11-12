@@ -3,7 +3,11 @@
 
 * Category: The Essence of Composition
 ** Arrows as Functions
-Categories are made up of objects and arrows. Arrows are *morphism*. In Haskell, you denote the type of input object and output object like below.
+Categories are made up of objects and arrows. Objects are subjects we are
+interested in. For example, they could be monoids, sets, or even groups. Arrows
+are *morphism* between those objects. Whenenver you talk about category, you
+automatically lose the information about the detailed structure of the object.In
+Haskell, you denote the type of input object and output object like below.
 #+begin_src haskell
 f :: A -> B
 g :: B -> C
@@ -13,6 +17,9 @@ g . f
 #+RESULTS:
 
 ** Properties of Composition
+Compositions in category contains information. And a category is characterized
+by a huge multiplication table containing information that is \(A :: a-> b\)
+,\(B :: b -> c \) and \(C :: a -> c\) gives \(B \circ A = C\)
 - Associativity
   #+begin_src haskell
   f :: A -> B
@@ -30,6 +37,7 @@ g . f
   id :: a -> a -- here a is parameterized type
   id x = x
   #+end_src
+
 
 ** Composition is the Essence of Problem Solving
 - We solve large, un-managable, hard problems by breaking them down into smaller
