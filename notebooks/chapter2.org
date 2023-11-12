@@ -1,0 +1,40 @@
+#+TITLE: Summary of Types and Functions
+#+AUTHOR: Yusheng Zhao
+#+DATE: <2023-11-12 Sun>
+
+* Introduction
+We introduce the category of *types* and *functions* as objects.
+
+** Who needs Types?
+In general, type systems in programming have two types of parameter. One for
+being strong to weak. The other for being dynamics to static. The former is a
+bit ill-defined in both academia and industry. A rule of thumb to tell whether a
+langauge is a strongly typed is whether it allows implicit type conversion at
+compile time.
+
+** What are Types?
+They are a set of values. Alternatively, you could look at it from the
+perspective of *denotational sematics*. A good source is this [[https://www.youtube.com/watch?v=bmKYiUOEo2A&t=0s][youtube video.]]
+
+#+begin_src haskell :results both
+fact n = product [1 .. n]
+fact 3
+#+end_src
+
+#+RESULTS:
+: 6
+
+** Pure functions
+Given the same input, the function will always produce the same results.
+
+** Parametrically Polymorphism
+Functions implemented with the same formula for any type. A good read is the
+following [[https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbndXX1dBTjhjNFJfTVprODZjcUJ3VW9YLUxFd3xBQ3Jtc0ttTlRrTjdVTG1aUmpWQXNlRWFuNlR0TTRIOHc0V2pjRXVrLVljcVd4bGk3SlRjeFZTeTc3Sy1QamdZLXpqNjZ2Y2UyM1htSFhfeGxRLVBNMU83cHg3WGh6Z24teTMxak8tMXpSLVRLT1FfRHF1TUxCNA&q=https%3A%2F%2Fict.senecacollege.ca%2F%7Eoop244%2Fpages.141%2Fcontent%2Fadhoc_p.html&v=aIOMRqiwziM][article]].
+
+** Predicate functions
+This refers to functions that has return type ~Bool~.
+
+* TODO
+- Read book.
+- Watch lectures.
+- Do exercise.
